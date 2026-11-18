@@ -1,5 +1,7 @@
+
 /* =========================================
-   OUR FIRST YEAR — GLOBAL DESIGN FOUNDATION
+   OUR FIRST YEAR
+   STAGE 01.4.2 — VINTAGE HARDCOVER
    Anniversary: 07 February 2027
 ========================================= */
 
@@ -13,35 +15,28 @@
 
 :root {
 
-    /* Main Colours */
     --blush: #fce7f0;
     --soft-pink: #f8d5e3;
     --rose: #d98aa8;
     --deep-rose: #a94f73;
 
-    /* Paper Colours */
     --ivory: #fffaf2;
     --warm-paper: #f8efdf;
 
-    /* Gold Colours */
     --gold: #c9a45c;
     --soft-gold: #e8d3a0;
     --dark-gold: #98763c;
 
-    /* Text Colours */
     --ink: #49333b;
     --soft-ink: #765b65;
 
-    /* Typography */
     --font-elegant: 'Cormorant Garamond', serif;
     --font-title: 'Playfair Display', serif;
     --font-handwriting: 'Great Vibes', cursive;
 
-    /* Animation Timing */
     --smooth-transition: 700ms;
     --gentle-transition: 1200ms;
 
-    /* Shadows */
     --soft-shadow:
         0 15px 40px rgba(115, 65, 85, 0.12);
 
@@ -64,17 +59,13 @@
 html {
     width: 100%;
     min-height: 100%;
-
     scroll-behavior: smooth;
-
     -webkit-text-size-adjust: 100%;
 }
-
 
 body {
     width: 100%;
     min-height: 100vh;
-
     overflow-x: hidden;
 
     background:
@@ -96,7 +87,6 @@ body {
         );
 
     color: var(--ink);
-
     font-family: var(--font-elegant);
 
     -webkit-font-smoothing: antialiased;
@@ -108,7 +98,6 @@ body {
 
 #bookExperience {
     position: relative;
-
     width: 100%;
     min-height: 100vh;
 
@@ -116,19 +105,584 @@ body {
     align-items: center;
     justify-content: center;
 
+    padding: 55px 20px;
+
     isolation: isolate;
 }
 
 
-/* ---------- MEDIA SAFETY ---------- */
+/* =========================================
+   BOOK STAGE
+========================================= */
 
-img {
-    display: block;
-    max-width: 100%;
+.book-stage {
+    position: relative;
+
+    width: min(100%, 390px);
+    aspect-ratio: 0.70;
+
+    perspective: 1600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-/* ---------- BUTTON FOUNDATION ---------- */
+/* ---------- BOOK SHADOW ---------- */
+
+.book-shadow {
+    position: absolute;
+
+    width: 92%;
+    height: 94%;
+
+    left: 7%;
+    top: 5%;
+
+    background: rgba(105, 55, 76, 0.25);
+
+    filter: blur(25px);
+
+    border-radius: 15px;
+
+    transform: translateY(20px) rotateY(-8deg);
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   HARDCOVER
+========================================= */
+
+.book {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transform:
+        rotateY(-7deg)
+        rotateX(2deg);
+
+    transition: transform 1s ease;
+
+    border-radius: 9px 13px 13px 9px;
+
+    background: #9f496a;
+
+    box-shadow:
+        8px 12px 25px rgba(75, 34, 51, 0.22),
+        2px 3px 5px rgba(75, 34, 51, 0.18);
+}
+
+
+/* ---------- BOOK SPINE ---------- */
+
+.book-spine {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 30px;
+    height: 100%;
+
+    z-index: 3;
+
+    border-radius: 9px 0 0 9px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #71344e 0%,
+            #a95877 25%,
+            #d58ba5 55%,
+            #a95877 82%,
+            #77384f 100%
+        );
+
+    box-shadow:
+        inset -3px 0 5px rgba(69, 29, 44, 0.25),
+        inset 2px 0 3px rgba(255, 230, 239, 0.22);
+}
+
+
+/* Spine decorative lines */
+
+.book-spine::before,
+.book-spine::after {
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+    right: 5px;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--soft-gold),
+        transparent
+    );
+
+    opacity: 0.75;
+}
+
+.book-spine::before {
+    top: 24px;
+}
+
+.book-spine::after {
+    bottom: 24px;
+}
+
+
+/* =========================================
+   FRONT COVER
+========================================= */
+
+.book-cover {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 19px;
+
+    overflow: hidden;
+
+    border-radius: 3px 11px 11px 3px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e8a9bf 0%,
+            #d98aa8 24%,
+            #c87596 60%,
+            #b65f83 100%
+        );
+
+    box-shadow:
+        inset 2px 0 5px rgba(255, 238, 244, 0.25),
+        inset -4px 0 8px rgba(91, 35, 57, 0.18),
+        inset 0 -5px 12px rgba(91, 35, 57, 0.10);
+
+    transform: translateZ(2px);
+}
+
+
+/* ---------- LEATHER TEXTURE ---------- */
+
+.cover-texture {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.025) 0px,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(90,35,55,0.025) 0px,
+            rgba(90,35,55,0.025) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    z-index: 1;
+}
+
+
+/* Gentle cover highlight */
+
+.book-cover::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            125deg,
+            rgba(255,255,255,0.20),
+            transparent 35%,
+            transparent 70%,
+            rgba(92,35,57,0.12)
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   GOLDEN COVER FRAME
+========================================= */
+
+.cover-border {
+    position: absolute;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+.outer-border {
+    inset: 17px;
+
+    border: 1.5px solid var(--soft-gold);
+
+    box-shadow:
+        0 0 5px rgba(255, 229, 169, 0.18),
+        inset 0 0 5px rgba(255, 229, 169, 0.12);
+}
+
+.inner-border {
+    inset: 23px;
+
+    border: 1px solid rgba(232, 211, 160, 0.65);
+}
+
+
+/* =========================================
+   COVER ORNAMENTS
+========================================= */
+
+.cover-top-ornament,
+.cover-bottom-ornament {
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--soft-gold);
+
+    font-family: var(--font-elegant);
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    z-index: 5;
+
+    text-shadow:
+        0 2px 4px rgba(92, 46, 61, 0.25);
+}
+
+.cover-top-ornament {
+    top: 42px;
+}
+
+.cover-bottom-ornament {
+    bottom: 38px;
+
+    transform: translateX(-50%) rotate(180deg);
+}
+
+
+/* ---------- CORNER DETAILS ---------- */
+
+.corner-decoration {
+    position: absolute;
+
+    color: var(--soft-gold);
+
+    font-family: var(--font-elegant);
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    z-index: 5;
+
+    text-shadow:
+        0 2px 4px rgba(92, 46, 61, 0.22);
+}
+
+.top-left {
+    top: 24px;
+    left: 24px;
+}
+
+.top-right {
+    top: 24px;
+    right: 24px;
+    transform: scaleX(-1);
+}
+
+.bottom-left {
+    bottom: 24px;
+    left: 24px;
+    transform: scaleY(-1);
+}
+
+.bottom-right {
+    bottom: 24px;
+    right: 24px;
+    transform: scale(-1);
+}
+
+
+/* =========================================
+   EMBOSSED HEART
+========================================= */
+
+.cover-heart {
+    position: absolute;
+
+    top: 23%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: clamp(38px, 10vw, 48px);
+
+    color: #f5dca9;
+
+    font-family: var(--font-elegant);
+
+    line-height: 1;
+
+    z-index: 5;
+
+    text-shadow:
+        1px 2px 1px rgba(106, 51, 68, 0.35),
+        -1px -1px 1px rgba(255, 239, 202, 0.55),
+        0 0 12px rgba(255, 224, 168, 0.18);
+}
+
+
+/* =========================================
+   COVER TITLE AREA
+========================================= */
+
+.cover-title-area {
+    position: absolute;
+
+    top: 43%;
+
+    left: 0;
+    right: 0;
+
+    transform: translateY(-10%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 0 24px;
+
+    z-index: 6;
+}
+
+
+/* ---------- PRETITLE ---------- */
+
+.cover-pretitle {
+    margin-bottom: 15px;
+
+    color: #f8e7c5;
+
+    font-family: var(--font-title);
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 1px 3px rgba(85, 39, 55, 0.25);
+}
+
+
+/* ---------- MAIN TITLE ---------- */
+
+.cover-title {
+    width: 100%;
+
+    min-height: 1.25em;
+
+    color: #fff0d1;
+
+    font-family: var(--font-handwriting);
+
+    font-size: clamp(42px, 12vw, 58px);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+
+    text-align: center;
+
+    text-shadow:
+        1px 2px 2px rgba(91, 42, 58, 0.35),
+        0 0 8px rgba(255, 225, 170, 0.16);
+}
+
+
+/* ---------- TITLE DIVIDER ---------- */
+
+.title-divider {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+    margin-bottom: 17px;
+
+    color: var(--soft-gold);
+
+    font-size: 17px;
+}
+
+.title-divider span {
+    display: block;
+
+    width: 35px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--soft-gold)
+    );
+}
+
+.title-divider span:last-child {
+    transform: rotate(180deg);
+}
+
+
+/* ---------- ANNIVERSARY DATE ---------- */
+
+.cover-date {
+    min-height: 1.5em;
+
+    color: #f6e3bd;
+
+    font-family: var(--font-title);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 1px 3px rgba(85, 39, 55, 0.25);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 480px) {
+
+    #bookExperience {
+        padding: 35px 16px;
+    }
+
+    .book-stage {
+        width: min(100%, 360px);
+    }
+
+    .book {
+        transform:
+            rotateY(-4deg)
+            rotateX(1deg);
+    }
+
+    .cover-top-ornament {
+        top: 35px;
+    }
+
+    .cover-bottom-ornament {
+        bottom: 32px;
+    }
+
+    .outer-border {
+        inset: 14px;
+    }
+
+    .inner-border {
+        inset: 20px;
+    }
+
+    .cover-heart {
+        top: 23%;
+    }
+
+    .cover-pretitle {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .cover-date {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 340px) {
+
+    #bookExperience {
+        padding: 25px 12px;
+    }
+
+    .cover-title {
+        font-size: 39px;
+    }
+
+    .cover-title-area {
+        padding: 0 17px;
+    }
+
+    .corner-decoration {
+        font-size: 23px;
+    }
+
+    .cover-top-ornament,
+    .cover-bottom-ornament {
+        font-size: 35px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
 button {
     font: inherit;
@@ -136,9 +690,6 @@ button {
 
     -webkit-tap-highlight-color: transparent;
 }
-
-
-/* ---------- ACCESSIBILITY ---------- */
 
 button:focus-visible {
     outline: 2px solid var(--deep-rose);
@@ -161,5 +712,4 @@ button:focus-visible {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-
 }
