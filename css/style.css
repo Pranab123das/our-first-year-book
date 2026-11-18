@@ -1,0 +1,165 @@
+/* =========================================
+   OUR FIRST YEAR — GLOBAL DESIGN FOUNDATION
+   Anniversary: 07 February 2027
+========================================= */
+
+
+/* ---------- GOOGLE FONTS ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+
+/* ---------- ROOT VARIABLES ---------- */
+
+:root {
+
+    /* Main Colours */
+    --blush: #fce7f0;
+    --soft-pink: #f8d5e3;
+    --rose: #d98aa8;
+    --deep-rose: #a94f73;
+
+    /* Paper Colours */
+    --ivory: #fffaf2;
+    --warm-paper: #f8efdf;
+
+    /* Gold Colours */
+    --gold: #c9a45c;
+    --soft-gold: #e8d3a0;
+    --dark-gold: #98763c;
+
+    /* Text Colours */
+    --ink: #49333b;
+    --soft-ink: #765b65;
+
+    /* Typography */
+    --font-elegant: 'Cormorant Garamond', serif;
+    --font-title: 'Playfair Display', serif;
+    --font-handwriting: 'Great Vibes', cursive;
+
+    /* Animation Timing */
+    --smooth-transition: 700ms;
+    --gentle-transition: 1200ms;
+
+    /* Shadows */
+    --soft-shadow:
+        0 15px 40px rgba(115, 65, 85, 0.12);
+
+    --gold-shadow:
+        0 4px 18px rgba(201, 164, 92, 0.20);
+}
+
+
+/* ---------- UNIVERSAL RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ---------- DOCUMENT ---------- */
+
+html {
+    width: 100%;
+    min-height: 100%;
+
+    scroll-behavior: smooth;
+
+    -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #fff7fa 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #f9e1ec 0%,
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #fce7f0,
+            #fff5f7,
+            #f7e1ec
+        );
+
+    color: var(--ink);
+
+    font-family: var(--font-elegant);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ---------- MAIN EXPERIENCE ---------- */
+
+#bookExperience {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+
+/* ---------- MEDIA SAFETY ---------- */
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ---------- BUTTON FOUNDATION ---------- */
+
+button {
+    font: inherit;
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ---------- ACCESSIBILITY ---------- */
+
+button:focus-visible {
+    outline: 2px solid var(--deep-rose);
+    outline-offset: 5px;
+}
+
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
